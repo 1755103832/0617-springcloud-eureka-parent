@@ -17,6 +17,7 @@
         <module>springcloud-gateway-5082</module>
         <module>springcloud-config-server-4081</module>
         <module>springcloud-config-client-3081</module>
+        <module>springcloud-io-zipkin-2081</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -109,8 +110,13 @@
                 <groupId>io.zipkin.java</groupId>
                 <artifactId>zipkin-server</artifactId>
                 <version>2.12.9</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-slf4j-impl</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
-
             <dependency>
                 <groupId>io.zipkin.java</groupId>
                 <artifactId>zipkin-autoconfigure-ui</artifactId>

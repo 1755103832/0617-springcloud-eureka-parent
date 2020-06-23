@@ -1,4 +1,0 @@
-server:
-  port: 6081
-  servlet:
-    context-path: /
