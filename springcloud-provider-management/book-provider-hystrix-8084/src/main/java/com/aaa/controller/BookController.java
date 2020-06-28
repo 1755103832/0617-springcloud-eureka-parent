@@ -34,7 +34,7 @@ public class BookController {
      * @date 2019/11/12
      **/
     @GetMapping("/queryBooks")
-//    @HystrixCommand(fallbackMethod = "queryBooksFallback")
+    @HystrixCommand(fallbackMethod = "queryBooksFallback")
     public List<Book> queryBooks() throws Exception {
         List<Book> bookList = bookService.queryBooks();
         if (bookList.size() > 0) {
@@ -43,13 +43,13 @@ public class BookController {
         return bookList;
     }
 
-//    public List<Book> queryBooksFallback() {
-//        List<Book> bookList = new ArrayList<>();
-//        Book book = new Book();
-//        book.setId(11L);
-//        book.setBookName("测试熔断,图书名称");
-//        book.setBookPrice("999.00");
-//        bookList.add(book);
-//        return bookList;
-//    }
+    public List<Book> queryBooksFallback() {
+        List<Book> bookList = new ArrayList<>();
+        Book book = new Book();
+        book.setId(11L);
+        book.setBookName("测试熔断,图书名称");
+        book.setBookPrice("999.00");
+        bookList.add(book);
+        return bookList;
+    }
 }
